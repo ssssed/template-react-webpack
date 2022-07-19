@@ -6,17 +6,19 @@ module.exports = {
   mode: 'development',
   entry: ['@babel/polyfill', './src/index.jsx'],
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash].js',
+    path: path.resolve(__dirname, 'build'),
+    filename: 'bundle.js',
   },
   devServer: {
     port: 3000,
+    static: './development',
+    historyApiFallback: true,
   },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new HtmlWebpackPlugin({ template: './public/index.html' }),
     new CleanWebpackPlugin(),
   ],
   module: {
