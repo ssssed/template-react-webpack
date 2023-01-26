@@ -1,6 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -15,10 +16,23 @@ module.exports = {
     historyApiFallback: true,
   },
   resolve: {
+    alias: {
+      "@": path.resolve(__dirname, './src')
+    },
     extensions: ['.js', '.jsx'],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: './public/index.html' }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      favicon: path.resolve("src",
+          "assets", "favicon.ico")
+    }),
+    new FaviconsWebpackPlugin({
+          logo: path.resolve("src", "assets", "favicon.ico"),
+          inject: htmlPlugin =>
+              path.basename(htmlPlugin.options.filename) === 'index.html',
+        }
+    ),
     new CleanWebpackPlugin(),
   ],
   module: {

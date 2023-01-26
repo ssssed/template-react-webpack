@@ -7,3 +7,4 @@
 .env.production.local
 yarn-debug.log*
 yarn-error.log*
+.idea
