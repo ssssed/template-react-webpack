@@ -25,10 +25,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
       favicon: path.resolve("src",
-          "assets", "favicon.ico")
+          "assets", "favicon.png")
     }),
     new FaviconsWebpackPlugin({
-          logo: path.resolve("src", "assets", "favicon.ico"),
+          logo: path.resolve("src", "assets", "favicon.png"),
           inject: htmlPlugin =>
               path.basename(htmlPlugin.options.filename) === 'index.html',
         }
